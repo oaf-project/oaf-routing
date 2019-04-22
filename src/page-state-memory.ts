@@ -12,9 +12,7 @@ export type PageStateMemory<LocationKey, PageState> = {
     previousLocationKey: LocationKey,
     nextLocationKey: LocationKey,
     previousPageState: PageState,
-    shouldHandleAction: boolean,
   ) => void;
-  readonly shouldHandleAction: (key: LocationKey) => boolean | undefined;
 };
 
 export const createPageStateMemory = <
@@ -25,12 +23,6 @@ export const createPageStateMemory = <
   // TODO persist these?
   const locations = new Array<LocationKey>();
   const pageStateMap = new Map<LocationKey, PageState>();
-  const shouldHandleActionMap = new Map<LocationKey, boolean>();
-
-  const purgeStateForKey = (key: LocationKey): void => {
-    pageStateMap.delete(key);
-    shouldHandleActionMap.delete(key);
-  };
 
   const handlePushAction = (
     previousLocationKey: LocationKey,
@@ -41,7 +33,7 @@ export const createPageStateMemory = <
     while (locations.length > desiredLocationsLength) {
       const key = locations.pop();
       if (key !== undefined) {
-        purgeStateForKey(key);
+        pageStateMap.delete(key);
       }
     }
 
@@ -58,7 +50,7 @@ export const createPageStateMemory = <
       // tslint:disable-next-line: no-object-mutation
       locations[indexToReplace] = nextLocationKey;
     }
-    purgeStateForKey(previousLocationKey);
+    pageStateMap.delete(previousLocationKey);
   };
 
   return {
@@ -70,7 +62,6 @@ export const createPageStateMemory = <
       previousLocationKey: LocationKey,
       nextLocationKey: LocationKey,
       previousPageState: PageState,
-      shouldHandleAction: boolean,
     ): void => {
       pageStateMap.set(previousLocationKey, previousPageState);
 
@@ -79,11 +70,6 @@ export const createPageStateMemory = <
       } else if (action === "REPLACE") {
         handleReplaceAction(previousLocationKey, nextLocationKey);
       }
-
-      shouldHandleActionMap.set(nextLocationKey, shouldHandleAction);
-    },
-    shouldHandleAction: (key: LocationKey): boolean | undefined => {
-      return shouldHandleActionMap.get(key);
     },
   };
 };
