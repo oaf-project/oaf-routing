@@ -1,0 +1,37 @@
+{
+  "name": "oaf-routing",
+  "version": "0.1.0",
+  "main": "dist",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oaf-project/oaf-routing.git"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.0",
+    "prettylint": "^1.0.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-immutable": "^5.5.2",
+    "tslint-sonarts": "^1.9.0",
+    "type-coverage": "^1.14.0",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "oaf-side-effects": "^0.7.0",
+    "unique-selector": "^0.4.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "type-coverage": "type-coverage --at-least 99",
+    "format": "prettier --write '{src,test}/**/*.{ts,tsx}'",
+    "format-lint": "prettylint '{src,test}/**/*.{ts,tsx}'",
+    "documentation": "typedoc --excludeNotExported --excludePrivate --out docs src && cp docs_config.yml ./docs/_config.yml",
+    "publish": "yarn build && yarn lint && yarn type-coverage && yarn format-lint && yarn publish"
+  },
+  "prettier": {
+    "trailingComma": "all"
+  }
+}
