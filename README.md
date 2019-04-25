@@ -18,3 +18,6 @@ Documentation at https://oaf-project.github.io/oaf-routing/
 * [Oaf Next.js Router](https://github.com/oaf-project/oaf-next.js-router) for [Next.js](https://github.com/zeit/next.js/).
 * [Oaf Navi](https://github.com/oaf-project/oaf-navi) for [Navi](https://github.com/frontarm/navi).
 * Your accessible SPA router wrapper here?
+
+## See also
+* [Oaf Side Effects](https://github.com/oaf-project/oaf-side-effects)
