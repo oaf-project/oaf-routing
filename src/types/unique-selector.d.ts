@@ -1,3 +1,8 @@
+/**
+ * Type declarations for unique-selector.
+ * See https://github.com/ericclemmons/unique-selector
+ * Remove this when https://github.com/ericclemmons/unique-selector/issues/37 lands
+ */
 declare module "unique-selector" {
   export type Selector = string;
 
