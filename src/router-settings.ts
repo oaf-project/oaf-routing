@@ -44,5 +44,5 @@ export const defaultSettings: RouterSettings<unknown, unknown> = {
   renderTimeout: 0,
   defaultPageState: { x: 0, y: 0 },
   focusOptions: undefined,
-  scrollIntoViewOptions: { behavior: "auto" },
+  scrollIntoViewOptions: undefined,
 };
