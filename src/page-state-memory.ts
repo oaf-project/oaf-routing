@@ -8,7 +8,7 @@ export type Action = "PUSH" | "POP" | "REPLACE";
 export type PageStateMemory<LocationKey, PageState> = {
   readonly pageState: (key: LocationKey) => PageState | undefined;
   readonly update: (
-    action: Action,
+    action: Action | undefined,
     previousLocationKey: LocationKey,
     nextLocationKey: LocationKey,
     previousPageState: PageState,
@@ -58,7 +58,7 @@ export const createPageStateMemory = <
       return pageStateMap.get(key);
     },
     update: (
-      action: Action,
+      action: Action | undefined,
       previousLocationKey: LocationKey,
       nextLocationKey: LocationKey,
       previousPageState: PageState,
