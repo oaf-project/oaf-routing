@@ -17,6 +17,7 @@ Documentation at https://oaf-project.github.io/oaf-routing/
 * [Oaf React Router](https://github.com/oaf-project/oaf-react-router) for [React Router](https://github.com/ReactTraining/react-router).
 * [Oaf Next.js Router](https://github.com/oaf-project/oaf-next.js-router) for [Next.js](https://github.com/zeit/next.js/).
 * [Oaf Navi](https://github.com/oaf-project/oaf-navi) for [Navi](https://github.com/frontarm/navi).
+* [Oaf Angular Router](https://github.com/oaf-project/oaf-angular-router) for [Angular's Router](https://angular.io/guide/router).
 * Your accessible SPA router wrapper here?
 
 ## See also
