@@ -20,17 +20,18 @@ import { createPageStateMemory } from "./page-state-memory";
 // tslint:disable: no-if-statement
 // tslint:disable: interface-over-type-literal
 
-export type OafRouter<Location> = {
+export type OafRouter<Location, LocationKey> = {
   readonly handleFirstPageLoad: (location: Location) => Promise<void>;
   readonly handleLocationChanged: (
     previousLocation: Location,
     currentLocation: Location,
-    action?: Action,
+    currentLocationKey: LocationKey,
+    action: Action | undefined,
   ) => Promise<void>;
   readonly handleLocationWillChange: (
-    currentLocation: Location,
-    nextLocation: Location,
-    action?: Action,
+    currentLocationKey: LocationKey,
+    nextLocationKey: LocationKey,
+    action: Action | undefined,
   ) => void;
   readonly resetAutoScrollRestoration: () => void;
 };
@@ -38,8 +39,7 @@ export type OafRouter<Location> = {
 export const createOafRouter = <Location, LocationKey>(
   settings: RouterSettings<Location>,
   hashFromLocation: (location: Location) => Hash,
-  keyFromLocation: (location: Location) => LocationKey,
-): OafRouter<Location> => {
+): OafRouter<Location, LocationKey> => {
   const resetAutoScrollRestoration = disableAutoScrollRestoration(
     settings.disableAutoScrollRestoration,
   );
@@ -69,7 +69,8 @@ export const createOafRouter = <Location, LocationKey>(
     handleLocationChanged: async (
       previousLocation: Location,
       currentLocation: Location,
-      action?: Action,
+      currentLocationKey: LocationKey,
+      action: Action | undefined,
     ): Promise<void> => {
       const title = await settings.documentTitle(currentLocation);
 
@@ -102,7 +103,7 @@ export const createOafRouter = <Location, LocationKey>(
         // components to know when we can safely repair focus.
         if (shouldRestorePageState) {
           const previousPageState = pageStateMemory.pageState(
-            keyFromLocation(currentLocation),
+            currentLocationKey,
           );
           const pageStateToSet = {
             ...settings.defaultPageState,
@@ -129,14 +130,14 @@ export const createOafRouter = <Location, LocationKey>(
       }
     },
     handleLocationWillChange: (
-      currentLocation: Location,
-      nextLocation: Location,
-      action?: Action,
+      currentLocationKey: LocationKey,
+      nextLocationKey: LocationKey,
+      action: Action | undefined,
     ): void => {
       pageStateMemory.update(
         action,
-        keyFromLocation(currentLocation),
-        keyFromLocation(nextLocation),
+        currentLocationKey,
+        nextLocationKey,
         getPageState(),
       );
     },
