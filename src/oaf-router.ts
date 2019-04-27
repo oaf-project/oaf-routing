@@ -115,9 +115,12 @@ export const createOafRouter = <Location, LocationKey>(
           );
         } else {
           setTimeout(() => {
+            const focusTarget = settings.handleHashFragment
+              ? elementFromHash(hashFromLocation(currentLocation))
+              : undefined;
             resetFocus(
               settings.primaryFocusTarget,
-              elementFromHash(hashFromLocation(currentLocation)),
+              focusTarget,
               settings.focusOptions,
               settings.scrollIntoViewOptions,
             );
