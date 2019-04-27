@@ -4,52 +4,59 @@ import {
   focusAndScrollIntoViewIfRequired,
   Hash,
   resetFocus,
+  setTitle,
 } from "oaf-side-effects";
 import {
   Action,
+  createPageStateMemory,
   disableAutoScrollRestoration,
   getPageState,
   PageState,
   RouterSettings,
   setPageState,
 } from ".";
-import { createPageStateMemory } from "./page-state-memory";
 
-// tslint:disable: no-object-mutation
 // tslint:disable: no-expression-statement
 // tslint:disable: no-if-statement
 // tslint:disable: interface-over-type-literal
 
-export type OafRouter<Location, LocationKey> = {
+export type LocationKey = string;
+
+export type OafRouter<Location> = {
   readonly handleFirstPageLoad: (location: Location) => Promise<void>;
   readonly handleLocationChanged: (
     previousLocation: Location,
     currentLocation: Location,
-    currentLocationKey: LocationKey,
+    currentLocationKey: LocationKey | undefined,
     action: Action | undefined,
   ) => Promise<void>;
   readonly handleLocationWillChange: (
-    currentLocationKey: LocationKey,
-    nextLocationKey: LocationKey,
+    currentLocationKey: LocationKey | undefined,
+    nextLocationKey: LocationKey | undefined,
     action: Action | undefined,
   ) => void;
   readonly resetAutoScrollRestoration: () => void;
 };
 
-export const createOafRouter = <Location, LocationKey>(
+export const createOafRouter = <Location>(
   settings: RouterSettings<Location>,
   hashFromLocation: (location: Location) => Hash,
-): OafRouter<Location, LocationKey> => {
+): OafRouter<Location> => {
   const resetAutoScrollRestoration = disableAutoScrollRestoration(
     settings.disableAutoScrollRestoration,
   );
+
+  // HACK we need a way to track where focus and scroll were left on the first loaded page
+  // but we won't have an entry in history for this initial page, so we just make up a key.
+  const orInitialKey = (key: LocationKey | undefined): LocationKey =>
+    key !== undefined ? key : "initial";
 
   const pageStateMemory = createPageStateMemory<LocationKey, PageState>();
 
   return {
     handleFirstPageLoad: async (location: Location): Promise<void> => {
       if (settings.setPageTitle) {
-        document.title = await settings.documentTitle(location);
+        setTitle(await settings.documentTitle(location));
       }
 
       if (settings.handleHashFragment) {
@@ -69,13 +76,13 @@ export const createOafRouter = <Location, LocationKey>(
     handleLocationChanged: async (
       previousLocation: Location,
       currentLocation: Location,
-      currentLocationKey: LocationKey,
+      currentLocationKey: LocationKey | undefined,
       action: Action | undefined,
     ): Promise<void> => {
       const title = await settings.documentTitle(currentLocation);
 
       if (settings.setPageTitle) {
-        document.title = title;
+        setTitle(title);
       }
 
       const shouldHandleAction = settings.shouldHandleAction(
@@ -103,7 +110,7 @@ export const createOafRouter = <Location, LocationKey>(
         // components to know when we can safely repair focus.
         if (shouldRestorePageState) {
           const previousPageState = pageStateMemory.pageState(
-            currentLocationKey,
+            orInitialKey(currentLocationKey),
           );
           const pageStateToSet = {
             ...settings.defaultPageState,
@@ -130,14 +137,14 @@ export const createOafRouter = <Location, LocationKey>(
       }
     },
     handleLocationWillChange: (
-      currentLocationKey: LocationKey,
-      nextLocationKey: LocationKey,
+      currentLocationKey: LocationKey | undefined,
+      nextLocationKey: LocationKey | undefined,
       action: Action | undefined,
     ): void => {
       pageStateMemory.update(
         action,
-        currentLocationKey,
-        nextLocationKey,
+        orInitialKey(currentLocationKey),
+        orInitialKey(nextLocationKey),
         getPageState(),
       );
     },
