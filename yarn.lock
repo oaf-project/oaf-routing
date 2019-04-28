@@ -67,9 +67,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "11.13.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.7.tgz#85dbb71c510442d00c0631f99dae957ce44fd104"
-  integrity sha512-suFHr6hcA9mp8vFrZTgrmqW2ZU3mbWsryQtQlY/QvwTISCw7nw/j+bCQPPohqmskhmqa5wLNuMHTTsc+xf1MQg==
+  version "11.13.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
+  integrity sha512-szA3x/3miL90ZJxUCzx9haNbK5/zmPieGraZEe4WI+3srN0eGLiT22NXeMHmyhNEopn+IrxqMc7wdVwvPl8meg==
 
 "@types/shelljs@^0.8.0":
   version "0.8.5"
@@ -525,9 +525,9 @@ number-is-nan@^1.0.0:
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
 oaf-side-effects@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-0.8.0.tgz#89867808b6ce82a5e29eb799a52518cf73db3e1c"
-  integrity sha512-CN0zIb6AucMdY2OFJqwaHq6TM/K3EY+C77pMAuMN799oIqZBPFXqcA2ZKDIrvyOK4FumFg2fpMGjajv8BfFmbw==
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-0.8.1.tgz#5c362819ed32741adbd7217c821cd8fbd9927794"
+  integrity sha512-QUIOYgTPToMTfKVST/sWHkD+2NFDtqHzN2c/fH9PbvUF4Qn0NNm3qBZ3FRK6lvSgo06viPSelQnTgre5hgA6xw==
 
 object-assign@^4.0.1:
   version "4.1.1"
@@ -884,9 +884,9 @@ typescript@^3.4.5:
   integrity sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
 
 uglify-js@^3.1.4:
-  version "3.5.7"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.7.tgz#1442fda9991a01aa0eb2853876640477109113ff"
-  integrity sha512-GCgJx3BBuaf/QMvBBkhoHDh4SVsHCC3ILEzriPw4FgJJKCuxVBSYLRkDlmT3uhXyGWKs3VN5r0mCkBIZaHWu3w==
+  version "3.5.9"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.9.tgz#372fbf95939555b1f460b1777d33a67d4a994ac9"
+  integrity sha512-WpT0RqsDtAWPNJK955DEnb6xjymR8Fn0OlK4TT4pS0ASYsVPqr5ELhgwOwLCP5J5vHeJ4xmMmz3DEgdqC10JeQ==
   dependencies:
     commander "~2.20.0"
     source-map "~0.6.1"
