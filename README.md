@@ -24,5 +24,6 @@ Documentation at https://oaf-project.github.io/oaf-routing/
 * [Single Page Apps routers are broken](https://medium.com/@robdel12/single-page-apps-routers-are-broken-255daa310cf)
 * [Accessible page titles in a Single Page App](https://hiddedevries.nl/en/blog/2018-07-19-accessible-page-titles-in-a-single-page-app)
 * [Single page applications, Angular.js and accessibility](http://simplyaccessible.com/article/spangular-accessibility)
+* [Creating accessible React apps](https://simplyaccessible.com/article/react-a11y/)
 * [Accessible React Router navigation with ARIA Live Regions and Redux](https://almerosteyn.com/2017/03/accessible-react-navigation)
 * [Oaf Side Effects](https://github.com/oaf-project/oaf-side-effects)
