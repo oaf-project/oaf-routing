@@ -61,7 +61,7 @@ export const setPageState = async (
     elementFromTarget(primaryFocusTarget) ||
     document.body;
 
-  await focusElement(elementToFocus, { preventScroll: true });
+  await focusElement(elementToFocus, true);
 
   setScrollPosition(pageState);
 };

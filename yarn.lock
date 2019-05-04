@@ -67,9 +67,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "11.13.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
-  integrity sha512-szA3x/3miL90ZJxUCzx9haNbK5/zmPieGraZEe4WI+3srN0eGLiT22NXeMHmyhNEopn+IrxqMc7wdVwvPl8meg==
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
+  integrity sha512-Jrb/x3HT4PTJp6a4avhmJCDEVrPdqLfl3e8GGMbpkGGdwAV5UGlIs4vVEfsHHfylZVOKZWpOqmqFH8CbfOZ6kg==
 
 "@types/shelljs@^0.8.0":
   version "0.8.5"
@@ -524,10 +524,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-oaf-side-effects@^0.8.0:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-0.8.1.tgz#5c362819ed32741adbd7217c821cd8fbd9927794"
-  integrity sha512-QUIOYgTPToMTfKVST/sWHkD+2NFDtqHzN2c/fH9PbvUF4Qn0NNm3qBZ3FRK6lvSgo06viPSelQnTgre5hgA6xw==
+oaf-side-effects@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-1.0.1.tgz#7c2dca58016eac58fa5d2d3aa21c2b4f4f57a43d"
+  integrity sha512-tn6YY96dDmKEdxJOCL/lq1yI+soAC/lCfZjeuVskcW+jRpAH+qY5/9xyC7EpE+QTCQMUFlokuZk6nCo8CQd0PA==
 
 object-assign@^4.0.1:
   version "4.1.1"
@@ -828,22 +828,22 @@ tsutils@^2.29.0:
   dependencies:
     tslib "^1.8.1"
 
-type-coverage-core@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/type-coverage-core/-/type-coverage-core-2.0.0.tgz#922db6989df5640ba7a9fd752ba9096cefb70902"
-  integrity sha512-va+KXCuugNaWIWEwJpW1QVOJt2pCp+f0qTA/q6UeOt3xLRqko6zK+496whPfo1iw9J7TZHymj4OspTb5OzEu0g==
+type-coverage-core@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/type-coverage-core/-/type-coverage-core-2.0.1.tgz#5f0be8487e0c28220bb350507b7f2c255f845626"
+  integrity sha512-0EHUwGxcrE6ELc6wkRXLksikbZKaqmaPvVD23eYXHOVxTNdS+b1HmN508hFJrys1Haz3avYxduQEfg3i+2yDVQ==
   dependencies:
     glob "7.1.3"
     tslib "1"
     tsutils "3"
 
-type-coverage@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/type-coverage/-/type-coverage-2.0.0.tgz#312f85ec925c82cefd42f88a121f3a977286cf34"
-  integrity sha512-1ONjW3rxXsrIDBc/HWi3Ux2DPm1kOTZnKQTV9E4Wrk9uTqrrP/55MkvbEjiYoqixHvtezJvJG4FIILOcM1XyTQ==
+type-coverage@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/type-coverage/-/type-coverage-2.0.1.tgz#c2a88fcb63d883a42beaf9899298dfa8100b53e8"
+  integrity sha512-swCLVLCm4XxRiQaI950tr+nts7pR+3vJMbdQPa/JWCycQO1+AmGA9Sv8N2aaDD5f7cRT6ICB8h4dPXcUmJY3oA==
   dependencies:
     minimist "1.2.0"
-    type-coverage-core "^2.0.0"
+    type-coverage-core "^2.0.1"
 
 typedoc-default-themes@^0.5.0:
   version "0.5.0"
@@ -884,9 +884,9 @@ typescript@^3.4.5:
   integrity sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
 
 uglify-js@^3.1.4:
-  version "3.5.9"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.9.tgz#372fbf95939555b1f460b1777d33a67d4a994ac9"
-  integrity sha512-WpT0RqsDtAWPNJK955DEnb6xjymR8Fn0OlK4TT4pS0ASYsVPqr5ELhgwOwLCP5J5vHeJ4xmMmz3DEgdqC10JeQ==
+  version "3.5.10"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.10.tgz#652bef39f86d9dbfd6674407ee05a5e2d372cf2d"
+  integrity sha512-/GTF0nosyPLbdJBd+AwYiZ+Hu5z8KXWnO0WCGt1BQ/u9Iamhejykqmz5o1OHJ53+VAk6xVxychonnApDjuqGsw==
   dependencies:
     commander "~2.20.0"
     source-map "~0.6.1"

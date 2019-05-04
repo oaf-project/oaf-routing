@@ -42,9 +42,10 @@ export const createOafRouter = <Location>(
   settings: RouterSettings<Location>,
   hashFromLocation: (location: Location) => Hash,
 ): OafRouter<Location> => {
-  const resetAutoScrollRestoration = disableAutoScrollRestoration(
-    settings.disableAutoScrollRestoration,
-  );
+  const resetAutoScrollRestoration = settings.disableAutoScrollRestoration
+    ? disableAutoScrollRestoration()
+    : // tslint:disable-next-line: no-empty
+      () => {};
 
   // HACK we need a way to track where focus and scroll were left on the first loaded page
   // but we won't have an entry in history for this initial page, so we just make up a key.
@@ -66,8 +67,7 @@ export const createOafRouter = <Location>(
             focusAndScrollIntoViewIfRequired(
               focusTarget,
               focusTarget,
-              settings.focusOptions,
-              settings.scrollIntoViewOptions,
+              settings.smoothScroll,
             );
           }
         }, settings.renderTimeout);
@@ -129,8 +129,7 @@ export const createOafRouter = <Location>(
             resetFocus(
               settings.primaryFocusTarget,
               focusTarget,
-              settings.focusOptions,
-              settings.scrollIntoViewOptions,
+              settings.smoothScroll,
             );
           }, settings.renderTimeout);
         }

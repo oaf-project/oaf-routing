@@ -2,18 +2,19 @@
 // tslint:disable: no-object-mutation
 // tslint:disable: no-expression-statement
 
-export const disableAutoScrollRestoration = (
-  shouldDisable: boolean,
-): (() => void) => {
+/**
+ * Sets `window.history.scrollRestoration` to `manual` and returns a
+ * function that will restore it to its previous value.
+ */
+export const disableAutoScrollRestoration = (): (() => void) => {
   // https://developer.mozilla.org/en-US/docs/Web/API/History#Browser_compatibility
-  if (shouldDisable && "scrollRestoration" in window.history) {
+  if ("scrollRestoration" in window.history) {
     const original = window.history.scrollRestoration;
 
     window.history.scrollRestoration = "manual";
     return () => (window.history.scrollRestoration = original);
   } else {
-    return () => {
-      return;
-    };
+    // tslint:disable-next-line: no-empty
+    return () => {};
   }
 };

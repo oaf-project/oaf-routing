@@ -28,8 +28,7 @@ export interface RouterSettings<Location> {
   readonly restorePageStateOnPop: boolean;
   readonly renderTimeout: number;
   readonly defaultPageState: PageState;
-  readonly focusOptions?: FocusOptions;
-  readonly scrollIntoViewOptions?: ScrollIntoViewOptions;
+  readonly smoothScroll?: boolean;
   readonly setMessageTimeout?: number;
   readonly clearMessageTimeout?: number;
 }
@@ -49,8 +48,7 @@ export const defaultSettings: RouterSettings<unknown> = {
   restorePageStateOnPop: true,
   renderTimeout: 0,
   defaultPageState: { x: 0, y: 0 },
-  focusOptions: undefined,
-  scrollIntoViewOptions: undefined,
+  smoothScroll: undefined,
   setMessageTimeout: undefined,
   clearMessageTimeout: undefined,
 };
