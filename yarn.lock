@@ -524,10 +524,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-oaf-side-effects@^0.8.0:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-0.8.1.tgz#5c362819ed32741adbd7217c821cd8fbd9927794"
-  integrity sha512-QUIOYgTPToMTfKVST/sWHkD+2NFDtqHzN2c/fH9PbvUF4Qn0NNm3qBZ3FRK6lvSgo06viPSelQnTgre5hgA6xw==
+oaf-side-effects@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-1.0.0.tgz#d5940a930358df86bf90fe91e71a823f2b454aaa"
+  integrity sha512-NBuMogfW80dcVeC150eFoClgTkoDFvUThRIP8G7K6HfzOimrt0ivoYj61kiDYfnAQrP24kIAHXX7TmcIsEjTmA==
 
 object-assign@^4.0.1:
   version "4.1.1"
