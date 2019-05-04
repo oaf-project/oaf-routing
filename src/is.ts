@@ -4,8 +4,14 @@
  * MIT license https://github.com/arasatasaygin/is.js/blob/master/LICENSE
  */
 
-const userAgent = ((navigator && navigator.userAgent) || "").toLowerCase();
-const vendor = ((navigator && navigator.vendor) || "").toLowerCase();
+const userAgent = (
+  (typeof navigator === "object" && navigator.userAgent) ||
+  ""
+).toLowerCase();
+const vendor = (
+  (typeof navigator === "object" && navigator.vendor) ||
+  ""
+).toLowerCase();
 
 export const is = {
   chrome: (): boolean => {
