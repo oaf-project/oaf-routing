@@ -21,6 +21,8 @@ For IE support you will need to polyfill [Map](https://developer.mozilla.org/en-
 import "core-js/es6/map";
 ```
 
+If you use the `smoothScroll` option of `RouterSettings`, you may want to use iamdunstan's [smoothscroll polyfill](https://github.com/iamdustan/smoothscroll). See [MDN's `scrollIntoView` browser compatibility](scrollIntoView#Browser_compatibility).
+
 ## Libraries that use Oaf Routing
 * [Oaf React Router](https://github.com/oaf-project/oaf-react-router) for [React Router](https://github.com/ReactTraining/react-router).
 * [Oaf Next.js Router](https://github.com/oaf-project/oaf-next.js-router) for [Next.js](https://github.com/zeit/next.js/).
