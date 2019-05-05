@@ -12,6 +12,7 @@ import {
   disableAutoScrollRestoration,
   getPageState,
   PageState,
+  PageStateMemory,
   RouterSettings,
   setPageState,
 } from ".";
@@ -19,6 +20,7 @@ import {
 // tslint:disable: no-expression-statement
 // tslint:disable: no-if-statement
 // tslint:disable: interface-over-type-literal
+// tslint:disable: no-empty
 
 export type LocationKey = string;
 
@@ -38,21 +40,36 @@ export type OafRouter<Location> = {
   readonly resetAutoScrollRestoration: () => void;
 };
 
+const createPageStateMemoryWithFallback = (): PageStateMemory<
+  LocationKey,
+  PageState
+> => {
+  try {
+    return createPageStateMemory<LocationKey, PageState>();
+  } catch (e) {
+    // tslint:disable-next-line: no-console
+    console.error(e);
+    return {
+      pageState: () => undefined,
+      update: () => {},
+    };
+  }
+};
+
 export const createOafRouter = <Location>(
   settings: RouterSettings<Location>,
   hashFromLocation: (location: Location) => Hash,
 ): OafRouter<Location> => {
   const resetAutoScrollRestoration = settings.disableAutoScrollRestoration
     ? disableAutoScrollRestoration()
-    : // tslint:disable-next-line: no-empty
-      () => {};
+    : () => {};
 
   // HACK we need a way to track where focus and scroll were left on the first loaded page
   // but we won't have an entry in history for this initial page, so we just make up a key.
   const orInitialKey = (key: LocationKey | undefined): LocationKey =>
     key !== undefined ? key : "initial";
 
-  const pageStateMemory = createPageStateMemory<LocationKey, PageState>();
+  const pageStateMemory = createPageStateMemoryWithFallback();
 
   return {
     handleFirstPageLoad: async (location: Location): Promise<void> => {
