@@ -40,19 +40,24 @@ export type OafRouter<Location> = {
   readonly resetAutoScrollRestoration: () => void;
 };
 
-const createPageStateMemoryWithFallback = (): PageStateMemory<
-  LocationKey,
-  PageState
-> => {
+const createPageStateMemoryWithFallback = <Location>(
+  settings: RouterSettings<Location>,
+): PageStateMemory<LocationKey, PageState> => {
+  const dummyPageStateMemory = {
+    pageState: () => undefined,
+    update: () => {},
+  };
+
+  if (!settings.restorePageStateOnPop) {
+    return dummyPageStateMemory;
+  }
+
   try {
     return createPageStateMemory<LocationKey, PageState>();
   } catch (e) {
     // tslint:disable-next-line: no-console
     console.error(e);
-    return {
-      pageState: () => undefined,
-      update: () => {},
-    };
+    return dummyPageStateMemory;
   }
 };
 
@@ -69,7 +74,7 @@ export const createOafRouter = <Location>(
   const orInitialKey = (key: LocationKey | undefined): LocationKey =>
     key !== undefined ? key : "initial";
 
-  const pageStateMemory = createPageStateMemoryWithFallback();
+  const pageStateMemory = createPageStateMemoryWithFallback(settings);
 
   return {
     handleFirstPageLoad: async (location: Location): Promise<void> => {
@@ -157,12 +162,14 @@ export const createOafRouter = <Location>(
       nextLocationKey: LocationKey | undefined,
       action: Action | undefined,
     ): void => {
-      pageStateMemory.update(
-        action,
-        orInitialKey(currentLocationKey),
-        orInitialKey(nextLocationKey),
-        getPageState(),
-      );
+      if (settings.restorePageStateOnPop) {
+        pageStateMemory.update(
+          action,
+          orInitialKey(currentLocationKey),
+          orInitialKey(nextLocationKey),
+          getPageState(),
+        );
+      }
     },
     resetAutoScrollRestoration,
   };
