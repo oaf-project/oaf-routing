@@ -72,6 +72,9 @@
 				<h1 id="oaf-routing">Oaf Routing</h1>
 				<p>Common code for building accessible SPA router wrappers.</p>
 				<p>Documentation at <a href="https://oaf-project.github.io/oaf-routing/">https://oaf-project.github.io/oaf-routing/</a></p>
+				<h2 id="compatibility">Compatibility</h2>
+				<p>For IE support you will need to polyfill <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map#Browser_compatibility">Map</a>. Using <a href="https://github.com/zloirock/core-js">core-js</a>:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">"core-js/es6/map"</span>;</code></pre>
 				<h2 id="libraries-that-use-oaf-routing">Libraries that use Oaf Routing</h2>
 				<ul>
 					<li><a href="https://github.com/oaf-project/oaf-react-router">Oaf React Router</a> for <a href="https://github.com/ReactTraining/react-router">React Router</a>.</li>
