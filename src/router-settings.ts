@@ -8,8 +8,7 @@ import { Action, PageState } from ".";
 
 export interface RouterSettings<Location> {
   readonly announcementsDivId: string;
-  readonly primaryFocusTarget: Selector;
-
+  readonly primaryFocusTarget: Selector | ((location: Location) => Selector);
   readonly documentTitle: (location: Location) => Promise<string>;
   readonly navigationMessage: (
     title: string,

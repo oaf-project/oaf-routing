@@ -123,6 +123,11 @@ export const createOafRouter = <Location>(
           );
         }
 
+        const primaryFocusTarget =
+          typeof settings.primaryFocusTarget === "string"
+            ? settings.primaryFocusTarget
+            : settings.primaryFocusTarget(currentLocation);
+
         const shouldRestorePageState =
           action === "POP" && settings.restorePageStateOnPop;
 
@@ -140,7 +145,7 @@ export const createOafRouter = <Location>(
           };
 
           setTimeout(
-            () => setPageState(pageStateToSet, settings.primaryFocusTarget),
+            () => setPageState(pageStateToSet, primaryFocusTarget),
             settings.renderTimeout,
           );
         } else {
@@ -148,11 +153,7 @@ export const createOafRouter = <Location>(
             const focusTarget = settings.handleHashFragment
               ? elementFromHash(hashFromLocation(currentLocation))
               : undefined;
-            resetFocus(
-              settings.primaryFocusTarget,
-              focusTarget,
-              settings.smoothScroll,
-            );
+            resetFocus(primaryFocusTarget, focusTarget, settings.smoothScroll);
           }, settings.renderTimeout);
         }
       }
