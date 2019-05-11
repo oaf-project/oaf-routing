@@ -1,7 +1,7 @@
 import { Selector } from "oaf-side-effects";
 import { Action, PageState } from ".";
 
-// tslint:disable: no-commented-code
+// tslint:disable-next-line: no-commented-code
 // tslint:disable: interface-name
 // tslint:disable: no-mixed-interface
 // tslint:disable: object-literal-sort-keys
@@ -10,6 +10,7 @@ export interface RouterSettings<Location> {
   readonly announcementsDivId: string;
   readonly primaryFocusTarget: Selector | ((location: Location) => Selector);
   readonly documentTitle: (location: Location) => Promise<string>;
+  readonly documentTitleAnnounceFallback: string;
   readonly navigationMessage: (
     title: string,
     location: Location,
@@ -37,6 +38,8 @@ export const defaultSettings: RouterSettings<unknown> = {
   primaryFocusTarget: "main h1, [role=main] h1",
   documentTitle: () =>
     new Promise(resolve => setTimeout(() => resolve(document.title))),
+  // TODO i18n
+  documentTitleAnnounceFallback: "new page",
   // TODO i18n
   navigationMessage: (title: string): string => `Navigated to ${title}.`,
   shouldHandleAction: () => true,

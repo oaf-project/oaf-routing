@@ -61,6 +61,29 @@ const createPageStateMemoryWithFallback = <Location>(
   }
 };
 
+const documentTitle = async <Location>(
+  location: Location,
+  settings: RouterSettings<Location>,
+): Promise<string | undefined> => {
+  const title = await settings.documentTitle(location);
+
+  if (
+    title === null ||
+    title === undefined ||
+    typeof title !== "string" ||
+    title.trim() === ""
+  ) {
+    // tslint:disable-next-line: no-console
+    console.error(
+      `Title [${title}] is invalid. See https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html`,
+    );
+
+    return undefined;
+  } else {
+    return title;
+  }
+};
+
 export const createOafRouter = <Location>(
   settings: RouterSettings<Location>,
   hashFromLocation: (location: Location) => Hash,
@@ -78,8 +101,10 @@ export const createOafRouter = <Location>(
 
   return {
     handleFirstPageLoad: async (location: Location): Promise<void> => {
-      if (settings.setPageTitle) {
-        setTitle(await settings.documentTitle(location));
+      const title = await documentTitle(location, settings);
+
+      if (settings.setPageTitle && title) {
+        setTitle(title);
       }
 
       if (settings.handleHashFragment) {
@@ -101,9 +126,9 @@ export const createOafRouter = <Location>(
       currentLocationKey: LocationKey | undefined,
       action: Action | undefined,
     ): Promise<void> => {
-      const title = await settings.documentTitle(currentLocation);
+      const title = await documentTitle(currentLocation, settings);
 
-      if (settings.setPageTitle) {
+      if (settings.setPageTitle && title) {
         setTitle(title);
       }
 
@@ -116,7 +141,11 @@ export const createOafRouter = <Location>(
       if (shouldHandleAction) {
         if (settings.announcePageNavigation) {
           announce(
-            settings.navigationMessage(title, currentLocation, action),
+            settings.navigationMessage(
+              title || settings.documentTitleAnnounceFallback,
+              currentLocation,
+              action,
+            ),
             settings.announcementsDivId,
             settings.setMessageTimeout,
             settings.clearMessageTimeout,
