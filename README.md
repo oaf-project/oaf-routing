@@ -29,6 +29,7 @@ If you use the `smoothScroll` option of `RouterSettings`, you may want to use ia
 * [Oaf Navi](https://github.com/oaf-project/oaf-navi) for [Navi](https://github.com/frontarm/navi).
 * [Oaf Vue Router](https://github.com/oaf-project/oaf-vue-router) for [Vue Router](https://router.vuejs.org/).
 * [Oaf Angular Router](https://github.com/oaf-project/oaf-angular-router) for [Angular's Router](https://angular.io/guide/router).
+* [Oaf Svelte Routing](https://github.com/oaf-project/oaf-svelte-routing) for [Svelte Routing](https://github.com/EmilTholin/svelte-routing).
 * [Your accessible SPA router wrapper here?](https://github.com/oaf-project/oaf-routing/labels/new-impl)
 
 ## See also
