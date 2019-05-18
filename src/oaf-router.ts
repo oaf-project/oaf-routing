@@ -61,11 +61,11 @@ const createPageStateMemoryWithFallback = <Location>(
   }
 };
 
-const documentTitle = async <Location>(
+const documentTitle = <Location>(
   location: Location,
   settings: RouterSettings<Location>,
-): Promise<string | undefined> => {
-  const title = await settings.documentTitle(location);
+): string | undefined => {
+  const title = settings.documentTitle(location);
 
   if (
     title === null ||
@@ -101,23 +101,21 @@ export const createOafRouter = <Location>(
 
   return {
     handleFirstPageLoad: async (location: Location): Promise<void> => {
-      const title = await documentTitle(location, settings);
+      const title = documentTitle(location, settings);
 
       if (settings.setPageTitle && title) {
         setTitle(title);
       }
 
       if (settings.handleHashFragment) {
-        setTimeout(() => {
-          const focusTarget = elementFromHash(hashFromLocation(location));
-          if (focusTarget !== undefined) {
-            focusAndScrollIntoViewIfRequired(
-              focusTarget,
-              focusTarget,
-              settings.smoothScroll,
-            );
-          }
-        }, settings.renderTimeout);
+        const focusTarget = elementFromHash(hashFromLocation(location));
+        if (focusTarget !== undefined) {
+          focusAndScrollIntoViewIfRequired(
+            focusTarget,
+            focusTarget,
+            settings.smoothScroll,
+          );
+        }
       }
     },
     handleLocationChanged: async (
@@ -126,7 +124,7 @@ export const createOafRouter = <Location>(
       currentLocationKey: LocationKey | undefined,
       action: Action | undefined,
     ): Promise<void> => {
-      const title = await documentTitle(currentLocation, settings);
+      const title = documentTitle(currentLocation, settings);
 
       if (settings.setPageTitle && title) {
         setTitle(title);
@@ -138,53 +136,52 @@ export const createOafRouter = <Location>(
         action,
       );
 
-      if (shouldHandleAction) {
-        if (settings.announcePageNavigation) {
-          announce(
-            settings.navigationMessage(
-              title || settings.documentTitleAnnounceFallback,
-              currentLocation,
-              action,
-            ),
-            settings.announcementsDivId,
-            settings.setMessageTimeout,
-            settings.clearMessageTimeout,
-          );
-        }
+      if (!shouldHandleAction) {
+        return Promise.resolve();
+      }
 
-        const primaryFocusTarget =
-          typeof settings.primaryFocusTarget === "string"
-            ? settings.primaryFocusTarget
-            : settings.primaryFocusTarget(currentLocation);
+      if (settings.announcePageNavigation) {
+        announce(
+          settings.navigationMessage(
+            title || settings.documentTitleAnnounceFallback,
+            currentLocation,
+            action,
+          ),
+          settings.announcementsDivId,
+          settings.setMessageTimeout,
+          settings.clearMessageTimeout,
+        );
+      }
 
-        const shouldRestorePageState =
-          action === "POP" && settings.restorePageStateOnPop;
+      const primaryFocusTarget =
+        typeof settings.primaryFocusTarget === "string"
+          ? settings.primaryFocusTarget
+          : settings.primaryFocusTarget(currentLocation);
 
-        // HACK: We use setTimeout to give React a chance to render before we repair focus.
-        // This may or may not be future proof. Revisit when React 17 is released.
-        // We may have to tap into componentDidMount() on the individual react-router Route
-        // components to know when we can safely repair focus.
-        if (shouldRestorePageState) {
-          const previousPageState = pageStateMemory.pageState(
-            orInitialKey(currentLocationKey),
-          );
-          const pageStateToSet = {
-            ...settings.defaultPageState,
-            ...previousPageState,
-          };
+      const shouldRestorePageState =
+        action === "POP" && settings.restorePageStateOnPop;
 
-          setTimeout(
-            () => setPageState(pageStateToSet, primaryFocusTarget),
-            settings.renderTimeout,
-          );
-        } else {
-          setTimeout(() => {
-            const focusTarget = settings.handleHashFragment
-              ? elementFromHash(hashFromLocation(currentLocation))
-              : undefined;
-            resetFocus(primaryFocusTarget, focusTarget, settings.smoothScroll);
-          }, settings.renderTimeout);
-        }
+      if (shouldRestorePageState) {
+        const previousPageState = pageStateMemory.pageState(
+          orInitialKey(currentLocationKey),
+        );
+        const pageStateToSet = {
+          ...settings.defaultPageState,
+          ...previousPageState,
+        };
+
+        return setPageState(pageStateToSet, primaryFocusTarget);
+      } else {
+        const focusTarget = settings.handleHashFragment
+          ? elementFromHash(hashFromLocation(currentLocation))
+          : undefined;
+        // TODO: warn if resetFocus returns false?
+        await resetFocus(
+          primaryFocusTarget,
+          focusTarget,
+          settings.smoothScroll,
+        );
+        return;
       }
     },
     handleLocationWillChange: (

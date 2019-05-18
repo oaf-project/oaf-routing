@@ -9,7 +9,7 @@ import { Action, PageState } from ".";
 export interface RouterSettings<Location> {
   readonly announcementsDivId: string;
   readonly primaryFocusTarget: Selector | ((location: Location) => Selector);
-  readonly documentTitle: (location: Location) => Promise<string>;
+  readonly documentTitle: (location: Location) => string;
   readonly documentTitleAnnounceFallback: string;
   readonly navigationMessage: (
     title: string,
@@ -36,8 +36,7 @@ export interface RouterSettings<Location> {
 export const defaultSettings: RouterSettings<unknown> = {
   announcementsDivId: "announcements",
   primaryFocusTarget: "main h1, [role=main] h1",
-  documentTitle: () =>
-    new Promise(resolve => setTimeout(() => resolve(document.title))),
+  documentTitle: () => document.title,
   // TODO i18n
   documentTitleAnnounceFallback: "new page",
   // TODO i18n
