@@ -34,9 +34,9 @@ export type OafRouter<Location> = {
     action: Action | undefined,
   ) => Promise<void>;
   readonly handleLocationWillChange: (
-    currentLocationKey: LocationKey | undefined,
-    nextLocationKey: LocationKey | undefined,
-    action: Action | undefined,
+    currentLocationKey: LocationKey,
+    nextLocationKey: LocationKey,
+    action: Action,
   ) => void;
   readonly resetAutoScrollRestoration: () => void;
 };
@@ -90,11 +90,6 @@ export const createOafRouter = <Location>(
   const resetAutoScrollRestoration = settings.disableAutoScrollRestoration
     ? disableAutoScrollRestoration()
     : () => {};
-
-  // HACK we need a way to track where focus and scroll were left on the first loaded page
-  // but we won't have an entry in history for this initial page, so we just make up a key.
-  const orInitialKey = (key: LocationKey | undefined): LocationKey =>
-    key !== undefined ? key : "initial";
 
   const pageStateMemory = createPageStateMemoryWithFallback(settings);
 
@@ -166,9 +161,10 @@ export const createOafRouter = <Location>(
           action === "POP" && settings.restorePageStateOnPop;
 
         if (shouldRestorePageState) {
-          const previousPageState = pageStateMemory.pageState(
-            orInitialKey(currentLocationKey),
-          );
+          const previousPageState =
+            currentLocationKey !== undefined
+              ? pageStateMemory.pageState(currentLocationKey)
+              : undefined;
           const pageStateToSet = {
             ...settings.defaultPageState,
             ...previousPageState,
@@ -194,15 +190,15 @@ export const createOafRouter = <Location>(
       }
     },
     handleLocationWillChange: (
-      currentLocationKey: LocationKey | undefined,
-      nextLocationKey: LocationKey | undefined,
-      action: Action | undefined,
+      currentLocationKey: LocationKey,
+      nextLocationKey: LocationKey,
+      action: Action,
     ): void => {
       if (settings.restorePageStateOnPop) {
         pageStateMemory.update(
           action,
-          orInitialKey(currentLocationKey),
-          orInitialKey(nextLocationKey),
+          currentLocationKey,
+          nextLocationKey,
           getPageState(),
         );
       }
