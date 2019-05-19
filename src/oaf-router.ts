@@ -21,6 +21,7 @@ import {
 // tslint:disable: no-if-statement
 // tslint:disable: interface-over-type-literal
 // tslint:disable: no-empty
+// tslint:disable: no-console
 
 export type LocationKey = string;
 
@@ -55,7 +56,6 @@ const createPageStateMemoryWithFallback = <Location>(
   try {
     return createPageStateMemory<LocationKey, PageState>();
   } catch (e) {
-    // tslint:disable-next-line: no-console
     console.error(e);
     return dummyPageStateMemory;
   }
@@ -73,7 +73,6 @@ const documentTitle = <Location>(
     typeof title !== "string" ||
     title.trim() === ""
   ) {
-    // tslint:disable-next-line: no-console
     console.error(
       `Title [${title}] is invalid. See https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html`,
     );
@@ -108,13 +107,17 @@ export const createOafRouter = <Location>(
       }
 
       if (settings.handleHashFragment) {
-        const focusTarget = elementFromHash(hashFromLocation(location));
+        const hash = hashFromLocation(location);
+        const focusTarget = elementFromHash(hash);
         if (focusTarget !== undefined) {
-          focusAndScrollIntoViewIfRequired(
+          const didFocus = await focusAndScrollIntoViewIfRequired(
             focusTarget,
             focusTarget,
             settings.smoothScroll,
           );
+          if (!didFocus) {
+            console.warn(`Unable to focus element for hash [${hash}].`);
+          }
         }
       }
     },
@@ -137,7 +140,7 @@ export const createOafRouter = <Location>(
       );
 
       if (!shouldHandleAction) {
-        return Promise.resolve();
+        return;
       }
 
       if (settings.announcePageNavigation) {
@@ -153,35 +156,41 @@ export const createOafRouter = <Location>(
         );
       }
 
-      const primaryFocusTarget =
-        typeof settings.primaryFocusTarget === "string"
-          ? settings.primaryFocusTarget
-          : settings.primaryFocusTarget(currentLocation);
+      if (settings.repairFocus) {
+        const primaryFocusTarget =
+          typeof settings.primaryFocusTarget === "string"
+            ? settings.primaryFocusTarget
+            : settings.primaryFocusTarget(currentLocation);
 
-      const shouldRestorePageState =
-        action === "POP" && settings.restorePageStateOnPop;
+        const shouldRestorePageState =
+          action === "POP" && settings.restorePageStateOnPop;
 
-      if (shouldRestorePageState) {
-        const previousPageState = pageStateMemory.pageState(
-          orInitialKey(currentLocationKey),
-        );
-        const pageStateToSet = {
-          ...settings.defaultPageState,
-          ...previousPageState,
-        };
+        if (shouldRestorePageState) {
+          const previousPageState = pageStateMemory.pageState(
+            orInitialKey(currentLocationKey),
+          );
+          const pageStateToSet = {
+            ...settings.defaultPageState,
+            ...previousPageState,
+          };
 
-        return setPageState(pageStateToSet, primaryFocusTarget);
-      } else {
-        const focusTarget = settings.handleHashFragment
-          ? elementFromHash(hashFromLocation(currentLocation))
-          : undefined;
-        // TODO: warn if resetFocus returns false?
-        await resetFocus(
-          primaryFocusTarget,
-          focusTarget,
-          settings.smoothScroll,
-        );
-        return;
+          await setPageState(pageStateToSet, primaryFocusTarget);
+        } else {
+          const hash = hashFromLocation(currentLocation);
+          const focusTarget = settings.handleHashFragment
+            ? elementFromHash(hash)
+            : undefined;
+          const didFocus = await resetFocus(
+            primaryFocusTarget,
+            focusTarget,
+            settings.smoothScroll,
+          );
+          if (!didFocus) {
+            console.warn(
+              `Unable to focus element for primary focus target [${primaryFocusTarget}] and hash [${hash}].`,
+            );
+          }
+        }
       }
     },
     handleLocationWillChange: (

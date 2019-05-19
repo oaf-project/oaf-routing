@@ -23,6 +23,7 @@ export interface RouterSettings<Location> {
   ) => boolean;
   readonly disableAutoScrollRestoration: boolean;
   readonly announcePageNavigation: boolean;
+  readonly repairFocus: boolean;
   readonly setPageTitle: boolean;
   readonly handleHashFragment: boolean;
   readonly restorePageStateOnPop: boolean;
@@ -44,6 +45,7 @@ export const defaultSettings: RouterSettings<unknown> = {
   shouldHandleAction: () => true,
   disableAutoScrollRestoration: true,
   announcePageNavigation: true,
+  repairFocus: true,
   setPageTitle: false,
   handleHashFragment: true,
   restorePageStateOnPop: true,
