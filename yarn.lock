@@ -536,10 +536,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-oaf-side-effects@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-1.0.3.tgz#bcbdebf6b13a4c12aa8fbed762cb73232cc9df48"
-  integrity sha512-ep5grxSLnQbpyeehHP7m5iFDYBl7tQORDXVu/19FRQOwdhKQaiNn6O0Z9XokvoM4IxhIPEZ5nKtpeLpygEXE5Q==
+oaf-side-effects@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-2.0.0.tgz#d6bfd4763cf42bca0fa97717146ddcc826679933"
+  integrity sha512-5uNHdioJl1VAfzLC3VVSZLENG3VKdATHj2P2pm2H4iyxT3SNeNerO2nbtj9TfxFffL94N28M4aId+V4X43XEBQ==
 
 object-assign@^4.0.1:
   version "4.1.1"
