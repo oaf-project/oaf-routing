@@ -19,7 +19,7 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "oaf-side-effects": "^1.0.3",
+    "oaf-side-effects": "^2.0.0",
     "unique-selector": "^0.4.1"
   },
   "scripts": {
