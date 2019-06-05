@@ -2,6 +2,7 @@
 // tslint:disable: no-if-statement
 // tslint:disable: interface-over-type-literal
 // tslint:disable: object-literal-sort-keys
+// tslint:disable: no-array-mutation
 
 export type Action = "PUSH" | "POP" | "REPLACE";
 
@@ -30,6 +31,7 @@ export const createPageStateMemory = <
   ): void => {
     const desiredLocationsLength = locations.indexOf(previousLocationKey) + 1;
 
+    // tslint:disable-next-line: no-loop-statement
     while (locations.length > desiredLocationsLength) {
       const key = locations.pop();
       if (key !== undefined) {

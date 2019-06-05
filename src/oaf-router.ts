@@ -53,6 +53,7 @@ const createPageStateMemoryWithFallback = <Location>(
     return dummyPageStateMemory;
   }
 
+  // tslint:disable-next-line: no-try
   try {
     return createPageStateMemory<LocationKey, PageState>();
   } catch (e) {
