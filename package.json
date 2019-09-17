@@ -22,7 +22,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "oaf-side-effects": "^2.0.0",
+    "oaf-side-effects": "^2.0.1",
     "unique-selector": "^0.4.1"
   },
   "scripts": {
