@@ -8,7 +8,7 @@
     "url": "https://github.com/oaf-project/oaf-routing.git"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^24.0.25",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "prettylint": "^1.0.0",
@@ -17,9 +17,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^6.0.1",
     "tslint-sonarts": "^1.9.0",
-    "type-coverage": "^2.3.1",
-    "typedoc": "^0.15.4",
-    "typescript": "^3.7.3"
+    "type-coverage": "^2.4.0",
+    "typedoc": "^0.15.6",
+    "typescript": "^3.7.4"
   },
   "dependencies": {
     "oaf-side-effects": "^2.0.1",
