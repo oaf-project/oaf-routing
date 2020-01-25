@@ -2559,10 +2559,10 @@ nwsapi@^2.0.7:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
   integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
 
-oaf-side-effects@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-2.0.1.tgz#d458a39b5ab2b4e2d6bc338902e3549d4160725d"
-  integrity sha512-xmWk1NynmS4ywNUtHUOYlai9s4vWPZpQ66NPOHM8x6e6g0ziD7Damgzza/OA/paMYQSsBaynNnvcoFun8zyRyA==
+oaf-side-effects@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-3.0.0.tgz#ddeca2fa646370f6cec1f2134b5a936be4551ef7"
+  integrity sha512-tYUsCziM8aYBaIEZa+mm0P8jNmmmjfDKnM6tJnDK/SVSj0RODlAUYWYs3/oIiLAs9WAa+QmVx1bI/H+UB2zGbg==
 
 oauth-sign@~0.9.0:
   version "0.9.0"
