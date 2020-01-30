@@ -6,4 +6,4 @@ script:
   - yarn lint
   - yarn type-coverage --strict --ignore-catch --detail
   - yarn test
-  - yarn stryker run
+  # - yarn stryker run

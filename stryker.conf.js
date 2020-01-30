@@ -8,7 +8,6 @@ module.exports = function(config) {
     coverageAnalysis: "off",
     tsconfigFile: "tsconfig.json",
     mutate: ["src/**/*.ts", "!src/**/*.test.ts"],
-    thresholds: { high: 80, low: 60, break: null },
-    symlinkNodeModules: false
+    thresholds: { high: 80, low: 60, break: null }
   });
 };
