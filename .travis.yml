@@ -5,6 +5,5 @@ script:
   - yarn build
   - yarn lint
   - yarn type-coverage --strict --ignore-catch --detail
-  - yarn format-lint
   - yarn test
   - yarn stryker run
