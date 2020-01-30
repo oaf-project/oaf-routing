@@ -1,6 +1,7 @@
-import { getPageState } from ".";
+/* eslint-disable functional/functional-parameters */
+/* eslint-disable functional/no-expression-statement */
 
-// tslint:disable: no-expression-statement
+import { getPageState } from ".";
 
 describe("getPageState", () => {
   test('returns "body" focus selector by default', () => {

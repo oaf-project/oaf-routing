@@ -1,8 +1,9 @@
-// tslint:disable: no-expression-statement
-// tslint:disable: no-if-statement
-// tslint:disable: interface-over-type-literal
-// tslint:disable: object-literal-sort-keys
-// tslint:disable: no-array-mutation
+/* eslint-disable functional/no-expression-statement */
+/* eslint-disable functional/no-conditional-statement */
+/* eslint-disable functional/immutable-data */
+/* eslint-disable functional/no-loop-statement */
+/* eslint-disable functional/functional-parameters */
+/* eslint-disable functional/no-return-void */
 
 export type Action = "PUSH" | "POP" | "REPLACE";
 
@@ -31,7 +32,6 @@ export const createPageStateMemory = <
   ): void => {
     const desiredLocationsLength = locations.indexOf(previousLocationKey) + 1;
 
-    // tslint:disable-next-line: no-loop-statement
     while (locations.length > desiredLocationsLength) {
       const key = locations.pop();
       if (key !== undefined) {
@@ -40,7 +40,6 @@ export const createPageStateMemory = <
     }
 
     locations.push(nextLocationKey);
-    return;
   };
 
   const handleReplaceAction = (
@@ -49,7 +48,6 @@ export const createPageStateMemory = <
   ): void => {
     const indexToReplace = locations.indexOf(previousLocationKey);
     if (indexToReplace !== -1) {
-      // tslint:disable-next-line: no-object-mutation
       locations[indexToReplace] = nextLocationKey;
     }
     pageStateMap.delete(previousLocationKey);

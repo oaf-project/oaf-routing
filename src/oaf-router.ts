@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable functional/no-expression-statement */
+/* eslint-disable functional/no-try-statement */
+/* eslint-disable functional/no-conditional-statement */
+/* eslint-disable functional/functional-parameters */
+/* eslint-disable functional/no-return-void */
+
 import {
   announce,
   elementFromHash,
@@ -16,12 +23,6 @@ import {
   RouterSettings,
   setPageState,
 } from ".";
-
-// tslint:disable: no-expression-statement
-// tslint:disable: no-if-statement
-// tslint:disable: interface-over-type-literal
-// tslint:disable: no-empty
-// tslint:disable: no-console
 
 export type LocationKey = string;
 
@@ -53,7 +54,6 @@ const createPageStateMemoryWithFallback = <Location>(
     return dummyPageStateMemory;
   }
 
-  // tslint:disable-next-line: no-try
   try {
     return createPageStateMemory<LocationKey, PageState>();
   } catch (e) {
@@ -87,6 +87,7 @@ const documentTitle = <Location>(
 export const createOafRouter = <Location>(
   settings: RouterSettings<Location>,
   hashFromLocation: (location: Location) => Hash,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ): OafRouter<Location> => {
   const resetAutoScrollRestoration = settings.disableAutoScrollRestoration
     ? disableAutoScrollRestoration()

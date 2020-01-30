@@ -1,3 +1,6 @@
+/* eslint-disable functional/no-expression-statement */
+/* eslint-disable functional/functional-parameters */
+
 import {
   elementFromTarget,
   focusElement,
@@ -7,10 +10,6 @@ import {
 } from "oaf-side-effects";
 import unique, { Selector } from "unique-selector";
 import { is } from "./is";
-
-// tslint:disable: interface-over-type-literal
-// tslint:disable: no-expression-statement
-// tslint:disable: no-if-statement
 
 /**
  * Aspects of page state that should be restored after POP history

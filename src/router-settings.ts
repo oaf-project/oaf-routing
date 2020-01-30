@@ -1,12 +1,10 @@
+/* eslint-disable functional/functional-parameters */
+/* eslint-disable functional/no-mixed-type */
+
 import { Selector } from "oaf-side-effects";
 import { Action, PageState } from ".";
 
-// tslint:disable-next-line: no-commented-code
-// tslint:disable: interface-name
-// tslint:disable: no-mixed-interface
-// tslint:disable: object-literal-sort-keys
-
-export interface RouterSettings<Location> {
+export type RouterSettings<Location> = {
   readonly announcementsDivId: string;
   readonly primaryFocusTarget: Selector | ((location: Location) => Selector);
   readonly documentTitle: (location: Location) => string;
@@ -32,7 +30,7 @@ export interface RouterSettings<Location> {
   readonly smoothScroll?: boolean;
   readonly setMessageTimeout?: number;
   readonly clearMessageTimeout?: number;
-}
+};
 
 export const defaultSettings: RouterSettings<unknown> = {
   announcementsDivId: "announcements",

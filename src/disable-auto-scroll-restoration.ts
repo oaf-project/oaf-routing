@@ -1,6 +1,9 @@
-// tslint:disable: no-if-statement
-// tslint:disable: no-object-mutation
-// tslint:disable: no-expression-statement
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable functional/immutable-data */
+/* eslint-disable functional/no-expression-statement */
+/* eslint-disable functional/no-conditional-statement */
+/* eslint-disable functional/no-return-void */
+/* eslint-disable functional/functional-parameters */
 
 /**
  * Sets `window.history.scrollRestoration` to `manual` and returns a
@@ -14,7 +17,6 @@ export const disableAutoScrollRestoration = (): (() => void) => {
     window.history.scrollRestoration = "manual";
     return () => (window.history.scrollRestoration = original);
   } else {
-    // tslint:disable-next-line: no-empty
     return () => {};
   }
 };
