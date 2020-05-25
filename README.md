@@ -2,7 +2,6 @@
 [![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Foaf-project%2Foaf-routing%2Fmaster%2Fpackage.json)](https://github.com/plantain-00/type-coverage)
 [![LGTM Grade](https://img.shields.io/lgtm/grade/javascript/github/oaf-project/oaf-routing.svg)](https://lgtm.com/projects/g/oaf-project/oaf-routing/)
 [![Known Vulnerabilities](https://snyk.io/test/github/oaf-project/oaf-routing/badge.svg?targetFile=package.json)](https://snyk.io/test/github/oaf-project/oaf-routing?targetFile=package.json)
-[![Greenkeeper badge](https://badges.greenkeeper.io/oaf-project/oaf-routing.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/oaf-routing.svg)](https://www.npmjs.com/package/oaf-routing)
 
 [![dependencies Status](https://david-dm.org/oaf-project/oaf-routing/status.svg)](https://david-dm.org/oaf-project/oaf-routing)
