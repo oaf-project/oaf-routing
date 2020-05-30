@@ -141,6 +141,7 @@ export const createOafRouter = <Location>(
       }
 
       if (settings.announcePageNavigation) {
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         announce(
           settings.navigationMessage(
             title || settings.documentTitleAnnounceFallback,
