@@ -48,6 +48,8 @@ export const createPageStateMemory = <
   ): void => {
     const indexToReplace = locations.indexOf(previousLocationKey);
     if (indexToReplace !== -1) {
+      // TODO https://github.com/danielnixon/eslint-plugin-total-functions/issues/13
+      // eslint-disable-next-line total-functions/no-array-subscript
       locations[indexToReplace] = nextLocationKey;
     }
     pageStateMap.delete(previousLocationKey);
