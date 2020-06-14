@@ -19,12 +19,12 @@ const vendor = (
 export const is = {
   chrome: (): boolean => {
     const match = vendor.includes("google inc")
-      ? userAgent.match(/(?:chrome|crios)\/(\d+)/)
+      ? userAgent.match(/(?:chrome|crios)\/(\d+)/u)
       : null;
     return match !== null && !is.opera();
   },
   opera: (): boolean => {
-    const match = userAgent.match(/(?:^opera.+?version|opr)\/(\d+)/);
+    const match = userAgent.match(/(?:^opera.+?version|opr)\/(\d+)/u);
     return match !== null;
   },
 };
