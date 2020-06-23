@@ -4,6 +4,6 @@ install:
 script:
   - yarn build
   - yarn lint
-  - yarn type-coverage --strict --ignore-catch --detail
+  - yarn type-coverage
   - yarn test
   # - yarn stryker run
