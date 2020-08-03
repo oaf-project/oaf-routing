@@ -11,6 +11,8 @@ import {
 import unique from "unique-selector";
 import { is } from "./is";
 
+type Selector = string | undefined;
+
 /**
  * Aspects of page state that should be restored after POP history
  * actions (i.e. after the user navigates back or forward in their browser).
@@ -19,7 +21,7 @@ export type PageState = ScrollPosition & {
   /**
    * A CSS selector that uniquely specifies the element that has keyboard focus (if any).
    */
-  readonly focusSelector?: any;
+  readonly focusSelector?: Selector;
 };
 
 /**
