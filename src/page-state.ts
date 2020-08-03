@@ -6,12 +6,11 @@ import {
   focusElement,
   getScrollPosition,
   ScrollPosition,
+  Selector,
   setScrollPosition,
 } from "oaf-side-effects";
 import unique from "unique-selector";
 import { is } from "./is";
-
-type Selector = string | undefined;
 
 /**
  * Aspects of page state that should be restored after POP history
