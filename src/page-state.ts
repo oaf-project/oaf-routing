@@ -8,7 +8,7 @@ import {
   ScrollPosition,
   setScrollPosition,
 } from "oaf-side-effects";
-import unique, { Selector } from "unique-selector";
+import unique from "unique-selector";
 import { is } from "./is";
 
 /**
@@ -19,7 +19,7 @@ export type PageState = ScrollPosition & {
   /**
    * A CSS selector that uniquely specifies the element that has keyboard focus (if any).
    */
-  readonly focusSelector?: Selector;
+  readonly focusSelector?: any;
 };
 
 /**
