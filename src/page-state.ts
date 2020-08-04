@@ -10,7 +10,6 @@ import {
   setScrollPosition,
 } from "oaf-side-effects";
 import unique from "unique-selector";
-import { is } from "./is";
 
 /**
  * Aspects of page state that should be restored after POP history
@@ -38,11 +37,6 @@ export const getPageState = (): PageState => {
   };
 };
 
-// Chrome doesn't restore the previously focused element when
-// navigating back and forward (history POP), but Safari and Firefox do.
-// TODO test more browsers here (Chromium, Opera, etc).
-const shouldRestoreFocusAfterPop = !is.chrome();
-
 /**
  * Set the page state.
  * @param pageState the page state to set
@@ -53,7 +47,7 @@ export const setPageState = async (
   primaryFocusTarget: Selector,
 ): Promise<void> => {
   const previouslyFocusedElement =
-    shouldRestoreFocusAfterPop && pageState.focusSelector !== undefined
+    pageState.focusSelector !== undefined
       ? elementFromTarget(pageState.focusSelector)
       : undefined;
   const elementToFocus =
