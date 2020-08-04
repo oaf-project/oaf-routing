@@ -6,9 +6,10 @@ import {
   focusElement,
   getScrollPosition,
   ScrollPosition,
+  Selector,
   setScrollPosition,
 } from "oaf-side-effects";
-import unique, { Selector } from "unique-selector";
+import unique from "unique-selector";
 import { is } from "./is";
 
 /**
