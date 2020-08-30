@@ -56,7 +56,7 @@ const createPageStateMemoryWithFallback = <Location>(
 
   try {
     return createPageStateMemory<LocationKey, PageState>();
-  } catch (e) {
+  } catch (e: unknown) {
     console.error(e);
     return dummyPageStateMemory;
   }
@@ -99,7 +99,7 @@ export const createOafRouter = <Location>(
     handleFirstPageLoad: async (location: Location): Promise<void> => {
       const title = documentTitle(location, settings);
 
-      if (settings.setPageTitle && title) {
+      if (settings.setPageTitle && title !== undefined) {
         setTitle(title);
       }
 
@@ -126,7 +126,7 @@ export const createOafRouter = <Location>(
     ): Promise<void> => {
       const title = documentTitle(currentLocation, settings);
 
-      if (settings.setPageTitle && title) {
+      if (settings.setPageTitle && title !== undefined) {
         setTitle(title);
       }
 
@@ -144,7 +144,7 @@ export const createOafRouter = <Location>(
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
         announce(
           settings.navigationMessage(
-            title || settings.documentTitleAnnounceFallback,
+            title ?? settings.documentTitleAnnounceFallback,
             currentLocation,
             action,
           ),

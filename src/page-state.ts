@@ -51,8 +51,8 @@ export const setPageState = async (
       ? elementFromTarget(pageState.focusSelector)
       : undefined;
   const elementToFocus =
-    previouslyFocusedElement ||
-    elementFromTarget(primaryFocusTarget) ||
+    previouslyFocusedElement ??
+    elementFromTarget(primaryFocusTarget) ??
     document.body;
 
   await focusElement(elementToFocus, true);
