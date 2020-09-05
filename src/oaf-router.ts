@@ -69,7 +69,11 @@ const documentTitle = <Location>(
   const title = settings.documentTitle(location);
 
   if (
+    // Our users might be using raw JavaScript, so we want this warning to apply even in cases
+    // that would normally not compile in TypeScript.
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     title === null ||
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     title === undefined ||
     typeof title !== "string" ||
     title.trim() === ""
