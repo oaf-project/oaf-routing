@@ -25,6 +25,7 @@ export const createPageStateMemory = <
   // TODO persist these?
   // eslint-disable-next-line functional/prefer-readonly-type
   const locations = new Array<LocationKey>();
+  // eslint-disable-next-line no-restricted-globals
   const pageStateMap = new Map<LocationKey, PageState>();
 
   const handlePushAction = (
