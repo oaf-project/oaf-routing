@@ -23,6 +23,7 @@ export const createPageStateMemory = <
 >(): PageStateMemory<LocationKey, PageState> => {
   // TODO constrain the size of these collections?
   // TODO persist these?
+  // eslint-disable-next-line functional/prefer-readonly-type
   const locations = new Array<LocationKey>();
   const pageStateMap = new Map<LocationKey, PageState>();
 
