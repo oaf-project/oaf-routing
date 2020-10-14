@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "oaf-side-effects": "^3.1.0",
-    "unique-selector": "^0.4.1"
+    "unique-selector": "^0.5.0"
   },
   "scripts": {
     "build": "tsc",
