@@ -8,5 +8,5 @@ module.exports = {
   // checkers: ["typescript"],
   tsconfigFile: "tsconfig.json",
   mutate: ["src/**/*.ts", "!src/**/*.test.ts"],
-  thresholds: { high: 80, low: 60, break: 9 }
+  thresholds: { high: 80, low: 60, break: 2 }
 };
