@@ -19,7 +19,7 @@ export type PageStateMemory<LocationKey, PageState> = {
 
 export const createPageStateMemory = <
   LocationKey,
-  PageState
+  PageState,
 >(): PageStateMemory<LocationKey, PageState> => {
   // TODO constrain the size of these collections?
   // TODO persist these?
