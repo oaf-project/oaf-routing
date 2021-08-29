@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/oaf-project/oaf-routing.svg?branch=master)](https://travis-ci.org/oaf-project/oaf-routing)
+[![Build Status](https://github.com/oaf-project/oaf-routing/actions/workflows/main.yml/badge.svg)](https://github.com/oaf-project/oaf-routing/actions/workflows/main.yml)
 [![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Foaf-project%2Foaf-routing%2Fmaster%2Fpackage.json)](https://github.com/plantain-00/type-coverage)
 [![codecov](https://codecov.io/gh/oaf-project/oaf-routing/branch/master/graph/badge.svg?token=wFig0PYrK1)](https://codecov.io/gh/oaf-project/oaf-routing)
 [![LGTM Grade](https://img.shields.io/lgtm/grade/javascript/github/oaf-project/oaf-routing.svg)](https://lgtm.com/projects/g/oaf-project/oaf-routing/)
