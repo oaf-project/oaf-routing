@@ -1,6 +1,3 @@
-/* eslint-disable functional/functional-parameters */
-/* eslint-disable functional/no-mixed-type */
-
 import { Selector } from "oaf-side-effects";
 import { Action, PageState } from ".";
 
@@ -35,11 +32,13 @@ export type RouterSettings<Location> = {
 export const defaultSettings: RouterSettings<unknown> = {
   announcementsDivId: "announcements",
   primaryFocusTarget: "main h1, [role=main] h1",
+  // eslint-disable-next-line functional/functional-parameters
   documentTitle: () => document.title,
   // TODO i18n
   documentTitleAnnounceFallback: "new page",
   // TODO i18n
   navigationMessage: (title: string): string => `Navigated to ${title}.`,
+  // eslint-disable-next-line functional/functional-parameters
   shouldHandleAction: () => true,
   disableAutoScrollRestoration: true,
   announcePageNavigation: true,

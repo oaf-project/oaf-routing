@@ -37,7 +37,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint src --ext .ts --report-unused-disable-directives",
     "format": "prettier --write '{src,test}/**/*.{ts,tsx}'",
     "documentation": "typedoc --excludeNotExported --excludePrivate --out docs src && cp docs_config.yml ./docs/_config.yml",
     "release": "yarn build && yarn lint && yarn type-coverage && yarn publish && yarn documentation",
