@@ -14,6 +14,7 @@ declare module "unique-selector" {
     readonly excludeRegex?: RegExp | null;
   };
 
+  // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
   declare function unique(element: Element, options?: Options): Selector;
 
   export = unique;
