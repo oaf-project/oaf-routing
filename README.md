@@ -32,6 +32,7 @@ If you use the `smoothScroll` option of `RouterSettings`, you may want to use ia
 
 ## See also
 * https://www.gatsbyjs.org/blog/2019-07-11-user-testing-accessible-client-routing/
+* https://www.gatsbyjs.com/blog/2020-02-10-accessible-client-side-routing-improvements/
 * [Single Page Apps routers are broken](https://medium.com/@robdel12/single-page-apps-routers-are-broken-255daa310cf)
 * [Accessible page titles in a Single Page App](https://hiddedevries.nl/en/blog/2018-07-19-accessible-page-titles-in-a-single-page-app)
 * [Single page applications, Angular.js and accessibility](http://simplyaccessible.com/article/spangular-accessibility)
