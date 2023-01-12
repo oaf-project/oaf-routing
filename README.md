@@ -39,3 +39,4 @@ If you use the `smoothScroll` option of `RouterSettings`, you may want to use ia
 * [Creating accessible React apps](https://simplyaccessible.com/article/react-a11y/)
 * [Accessible React Router navigation with ARIA Live Regions and Redux](https://almerosteyn.com/2017/03/accessible-react-navigation)
 * [Oaf Side Effects](https://github.com/oaf-project/oaf-side-effects)
+* https://kit.svelte.dev/docs/accessibility
