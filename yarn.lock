@@ -3165,7 +3165,7 @@ nwsapi@^2.2.2:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.2.tgz#e5418863e7905df67d51ec95938d67bf801f0bb0"
   integrity sha512-90yv+6538zuvUMnN+zCr8LuV6bPFdq50304114vJYJ8RDyK8D5O9Phpbd6SZWgI7PwzmmfN1upeOJlvybDSgCw==
 
-oaf-side-effects@^3.3.0:
+oaf-side-effects@^3.2.3:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/oaf-side-effects/-/oaf-side-effects-3.3.0.tgz#8186a802aaac73a59e827008f3b7dc7af61abce6"
   integrity sha512-YDSlfQiNrdbbAf7dn3cDsKjtw7ikGIL+WGOnOH8RAE1wuGLfbZxvnYV2br86t7VhfsYxpsbZg5ozRvSAkpCoPg==
