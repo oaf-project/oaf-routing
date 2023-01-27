@@ -1,5 +1,4 @@
 /* eslint-disable functional/no-expression-statement */
-/* eslint-disable functional/functional-parameters */
 
 import {
   elementFromTarget,
@@ -9,7 +8,6 @@ import {
   Selector,
   setScrollPosition,
 } from "oaf-side-effects";
-import unique from "unique-selector";
 
 /**
  * Aspects of page state that should be restored after POP history
@@ -25,7 +23,9 @@ export type PageState = ScrollPosition & {
 /**
  * Get the current page state.
  */
-export const getPageState = (): PageState => {
+export const getPageState = (
+  unique: (element: Element) => Selector,
+): PageState => {
   const focusSelector =
     document.activeElement !== null
       ? unique(document.activeElement)

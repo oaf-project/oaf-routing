@@ -199,7 +199,7 @@ export const createOafRouter = <Location>(
           action,
           currentLocationKey,
           nextLocationKey,
-          getPageState(),
+          getPageState(settings.unique),
         );
       }
     },

@@ -3,6 +3,7 @@
 /* eslint-disable functional/no-expression-statement */
 
 import { getPageState, setPageState } from ".";
+import unique from "unique-selector";
 
 beforeEach(() => {
   // eslint-disable-next-line functional/immutable-data
@@ -17,7 +18,7 @@ beforeEach(() => {
 
 describe("getPageState", () => {
   test('returns "body" focus selector by default', () => {
-    const state = getPageState();
+    const state = getPageState(unique);
 
     expect(state).toEqual({
       focusSelector: "body",

@@ -1,3 +1,4 @@
+/* eslint-disable functional/no-mixed-type */
 import type { Selector } from "oaf-side-effects";
 import {
   announce,
@@ -6,6 +7,7 @@ import {
   resetFocus,
   setTitle,
 } from "oaf-side-effects";
+import unique from "unique-selector";
 import type { Action, PageState } from ".";
 
 export type RouterSettings<Location> = {
@@ -39,6 +41,7 @@ export type RouterSettings<Location> = {
   readonly focusAndScrollIntoViewIfRequired: typeof focusAndScrollIntoViewIfRequired;
   readonly resetFocus: typeof resetFocus;
   readonly setTitle: typeof setTitle;
+  readonly unique: (element: Element) => Selector;
 };
 
 export const defaultSettings: RouterSettings<unknown> = {
@@ -68,4 +71,5 @@ export const defaultSettings: RouterSettings<unknown> = {
   focusAndScrollIntoViewIfRequired: focusAndScrollIntoViewIfRequired,
   resetFocus: resetFocus,
   setTitle: setTitle,
+  unique: unique,
 };
