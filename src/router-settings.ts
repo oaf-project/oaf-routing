@@ -1,5 +1,12 @@
-import { Selector } from "oaf-side-effects";
-import { Action, PageState } from ".";
+import type { Selector } from "oaf-side-effects";
+import {
+  announce,
+  elementFromHash,
+  focusAndScrollIntoViewIfRequired,
+  resetFocus,
+  setTitle,
+} from "oaf-side-effects";
+import type { Action, PageState } from ".";
 
 export type RouterSettings<Location> = {
   readonly announcementsDivId: string;
@@ -27,6 +34,11 @@ export type RouterSettings<Location> = {
   readonly smoothScroll?: boolean;
   readonly setMessageTimeout?: number;
   readonly clearMessageTimeout?: number;
+  readonly announce: typeof announce;
+  readonly elementFromHash: typeof elementFromHash;
+  readonly focusAndScrollIntoViewIfRequired: typeof focusAndScrollIntoViewIfRequired;
+  readonly resetFocus: typeof resetFocus;
+  readonly setTitle: typeof setTitle;
 };
 
 export const defaultSettings: RouterSettings<unknown> = {
@@ -51,4 +63,9 @@ export const defaultSettings: RouterSettings<unknown> = {
   smoothScroll: undefined,
   setMessageTimeout: undefined,
   clearMessageTimeout: undefined,
+  announce: announce,
+  elementFromHash: elementFromHash,
+  focusAndScrollIntoViewIfRequired: focusAndScrollIntoViewIfRequired,
+  resetFocus: resetFocus,
+  setTitle: setTitle,
 };

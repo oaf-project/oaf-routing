@@ -5,14 +5,7 @@
 /* eslint-disable functional/functional-parameters */
 /* eslint-disable functional/no-return-void */
 
-import {
-  announce,
-  elementFromHash,
-  focusAndScrollIntoViewIfRequired,
-  Hash,
-  resetFocus,
-  setTitle,
-} from "oaf-side-effects";
+import type { Hash } from "oaf-side-effects";
 import {
   Action,
   createPageStateMemory,
@@ -104,14 +97,14 @@ export const createOafRouter = <Location>(
       const title = documentTitle(location, settings);
 
       if (settings.setPageTitle && title !== undefined) {
-        setTitle(title);
+        settings.setTitle(title);
       }
 
       if (settings.handleHashFragment) {
         const hash = hashFromLocation(location);
-        const focusTarget = elementFromHash(hash);
+        const focusTarget = settings.elementFromHash(hash);
         if (focusTarget !== undefined) {
-          const didFocus = await focusAndScrollIntoViewIfRequired(
+          const didFocus = await settings.focusAndScrollIntoViewIfRequired(
             focusTarget,
             focusTarget,
             settings.smoothScroll,
@@ -131,7 +124,7 @@ export const createOafRouter = <Location>(
       const title = documentTitle(currentLocation, settings);
 
       if (settings.setPageTitle && title !== undefined) {
-        setTitle(title);
+        settings.setTitle(title);
       }
 
       const shouldHandleAction = settings.shouldHandleAction(
@@ -146,7 +139,7 @@ export const createOafRouter = <Location>(
 
       if (settings.announcePageNavigation) {
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        announce(
+        settings.announce(
           settings.navigationMessage(
             title ?? settings.documentTitleAnnounceFallback,
             currentLocation,
@@ -181,9 +174,9 @@ export const createOafRouter = <Location>(
         } else {
           const hash = hashFromLocation(currentLocation);
           const focusTarget = settings.handleHashFragment
-            ? elementFromHash(hash)
+            ? settings.elementFromHash(hash)
             : undefined;
-          const didFocus = await resetFocus(
+          const didFocus = await settings.resetFocus(
             primaryFocusTarget,
             focusTarget,
             settings.smoothScroll,
