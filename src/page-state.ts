@@ -24,7 +24,7 @@ export type PageState = ScrollPosition & {
  * Get the current page state.
  */
 export const getPageState = (
-  unique: (element: Element) => Selector,
+  unique: (element: Element) => Selector | undefined,
 ): PageState => {
   const focusSelector =
     document.activeElement !== null

@@ -41,7 +41,7 @@ export type RouterSettings<Location> = {
   readonly focusAndScrollIntoViewIfRequired: typeof focusAndScrollIntoViewIfRequired;
   readonly resetFocus: typeof resetFocus;
   readonly setTitle: typeof setTitle;
-  readonly unique: (element: Element) => Selector;
+  readonly unique: (element: Element) => Selector | undefined;
 };
 
 export const defaultSettings: RouterSettings<unknown> = {
